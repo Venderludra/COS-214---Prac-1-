@@ -8,7 +8,6 @@ Transformation::Transformation(string _name){
 }
 
 Transformation::Transformation(const Transformation& t1) : Transformation(t1.getName()){
-    
 }
 
 string Transformation::getName(){
