@@ -15,5 +15,5 @@ void StreamingPipeline::extract() {
 
 void StreamingPipeline::load() {
     cout << "Streaming load:" << records.size() << " records streamed." << endl;
-    stage= 4;
+    stage = 4;
 }
