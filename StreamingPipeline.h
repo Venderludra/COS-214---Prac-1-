@@ -5,6 +5,7 @@
 
 class StreamingPipeline : public Pipeline {
     public:
+        using Pipeline::Pipeline;//this allows streampipeline to inherit pipeline's constructor
         void extract() override;
         void load() override;
 };

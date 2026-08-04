@@ -1,5 +1,5 @@
 #ifndef CSVCONNECTOR_H
-#define CVSCONNECTOR_H
+#define CSVCONNECTOR_H
 #include "Connector.h"
 
 class CsvConnector : public Connector{

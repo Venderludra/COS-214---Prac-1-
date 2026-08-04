@@ -11,10 +11,10 @@ void TransformationRegistry::registerStep(string _key,Transformation* prototype)
 }
 
 Transformation* TransformationRegistry::create(string _key){
-    if(prototypes.find(_key) != prototypes.end()){
-        return nullptr;
+    if(prototypes.find(_key) == prototypes.end()){//if the key doesn't exist
+        return nullptr;//then return the null pointer
     }
-    return prototypes[_key]->clone(); //creates the designated prototype based on the 
+    return prototypes[_key]->clone(); 
 }
 
 TransformationRegistry::~TransformationRegistry(){

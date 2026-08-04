@@ -18,7 +18,7 @@ class Pipeline {
         virtual void extract() = 0;
         virtual void load() = 0;
         RunCheckpoint* createCheckpoint();
-        void restoreCheckpoint(RunCheckpoint*);
+        void restore(RunCheckpoint*);
         ~Pipeline();
 
     protected:

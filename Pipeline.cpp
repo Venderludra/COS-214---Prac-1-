@@ -3,11 +3,10 @@
 using namespace std;
 
 Pipeline::Pipeline(ConnectorFactory* factory) : factory(factory), stage(0) {
-    // Constructor implementation
+    //constructor
 }
 
-void Pipeline::run(){
-    // Implementation of the run method
+void Pipeline::run(){//run; template method: fixed lifecycle
     connect();
     extract();
     transform();
@@ -21,7 +20,8 @@ void Pipeline::addStep(Transformation* step) {
 void Pipeline::transform() {
     // Implementation of the transform method
     for (auto step : steps) {
-        step->apply(records);
+        //step->apply(records);
+        records = step->apply(records);
     }
     stage = 3;
 }
@@ -35,12 +35,17 @@ void Pipeline::connect() {
 }
 
 RunCheckpoint* Pipeline::createCheckpoint() {
-    // Implementation of the createCheckpoint method
-    return nullptr;
+    return new RunCheckpoint(stage, records);
+    //return nullptr; -> gives us seg-faults
 }
 
-void Pipeline::restoreCheckpoint(RunCheckpoint* checkpoint) {
-    // Implementation of the restoreCheckpoint method
+void Pipeline::restore(RunCheckpoint* checkpoint) {
+    //here we have the originator restoring the memento using wide interface
+    if(checkpoint!=nullptr){
+        //first check that the checkpoinnt actually exists before we attempt to use it
+        stage = checkpoint->getStage();
+        records = checkpoint->getRecords();
+    }
 }
 
 Pipeline::~Pipeline() {

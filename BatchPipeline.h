@@ -5,6 +5,7 @@
 
 class BatchPipeline : public Pipeline {
     public:
+        using Pipeline::Pipeline;//this allows batchpipeline to inherit pipeline's constructor
         void extract() override;
         void load() override;
 };

@@ -13,8 +13,9 @@ Transformation* DeduplicateStep::clone(){
 }
 
 vector<string> DeduplicateStep::apply(vector<string> _records){
+    if(_records.empty()) 
+        return {};//prevents temp from crashing when/if _records is empty
     vector<string> noDupes = {};
-    
     string temp = _records.at(0);
     
     for(int i = 1 ; i < _records.size() ; i++){

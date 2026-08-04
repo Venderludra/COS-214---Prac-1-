@@ -9,7 +9,7 @@ class Transformation{
         Transformation(const Transformation&);
         virtual Transformation* clone() = 0; //prototype
         virtual std::vector<std::string> apply(std::vector<std::string>) = 0;
-        std::string getName();
+        std::string getName() const;
         virtual ~Transformation();
         
     protected:
